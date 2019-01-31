@@ -13,10 +13,10 @@ namespace FlipperAPI
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FlipperDB : DbContext
+    public partial class Entities : DbContext
     {
-        public FlipperDB()
-            : base("name=FlipperDB")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -27,11 +27,10 @@ namespace FlipperAPI
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<ACTORS> ACTORS { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<CUSTOMERS> CUSTOMERS { get; set; }
+        public virtual DbSet<ASPNETROLES> ASPNETROLES { get; set; }
+        public virtual DbSet<ASPNETUSERCLAIMS> ASPNETUSERCLAIMS { get; set; }
+        public virtual DbSet<ASPNETUSERROLES> ASPNETUSERROLES { get; set; }
+        public virtual DbSet<ASPNETUSERS> ASPNETUSERS { get; set; }
         public virtual DbSet<FIDELITY_BONUS> FIDELITY_BONUS { get; set; }
         public virtual DbSet<FILM_ACTOR> FILM_ACTOR { get; set; }
         public virtual DbSet<FILM_GENRE> FILM_GENRE { get; set; }

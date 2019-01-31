@@ -15,12 +15,12 @@ namespace FlipperAPI
     public partial class RESERVATIONS
     {
         public decimal ID_RESERVATION { get; set; }
-        public decimal ID_CUSTOMER { get; set; }
         public decimal ID_SCREENING { get; set; }
         public Nullable<System.DateTime> RESERVATION_DATE { get; set; }
         public decimal ID_SEAT { get; set; }
+        public string ID_USER { get; set; }
     
-        public virtual CUSTOMERS CUSTOMERS { get; set; }
+        public virtual ASPNETUSERS ASPNETUSERS { get; set; }
         public virtual SEATS SEATS { get; set; }
         public virtual SCREENINGS SCREENINGS { get; set; }
     }

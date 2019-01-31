@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FlipperNS.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FlipperModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -23,55 +23,48 @@
           <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="SURNAME" Type="varchar2" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="AspNetRoles">
+        <EntityType Name="ASPNETROLES">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="nvarchar2" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="nvarchar2" MaxLength="256" Nullable="false" />
+          <Property Name="ID" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar2" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="AspNetUserClaims">
+        <EntityType Name="ASPNETUSERCLAIMS">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="number" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar2" MaxLength="128" Nullable="false" />
-          <Property Name="ClaimType" Type="nvarchar2" MaxLength="256" />
-          <Property Name="ClaimValue" Type="nvarchar2" MaxLength="256" />
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="USERID" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="CLAIMTYPE" Type="nvarchar2" MaxLength="256" />
+          <Property Name="CLAIMVALUE" Type="nvarchar2" MaxLength="256" />
         </EntityType>
-        <EntityType Name="AspNetUserRoles">
+        <EntityType Name="ASPNETUSERROLES">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="ROLEID" />
           </Key>
-          <Property Name="UserId" Type="nvarchar2" MaxLength="128" Nullable="false" />
-          <Property Name="RoleId" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="USERID" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="ROLEID" Type="nvarchar2" MaxLength="128" Nullable="false" />
         </EntityType>
-        <EntityType Name="AspNetUsers">
+        <EntityType Name="ASPNETUSERS">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="nvarchar2" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar2" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar2" MaxLength="256" />
-          <Property Name="SecurityStamp" Type="nvarchar2" MaxLength="256" />
-          <Property Name="PhoneNumber" Type="nvarchar2" MaxLength="256" />
-          <Property Name="PhoneNumberConfirmed" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="timestamp" Precision="6" />
-          <Property Name="LockoutEnabled" Type="number" Precision="1" Scale="0" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="number" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar2" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CUSTOMERS">
-          <Key>
-            <PropertyRef Name="ID_CUSTOMER" />
-          </Key>
-          <Property Name="ID_CUSTOMER" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
-          <Property Name="SURNAME" Type="varchar2" MaxLength="100" Nullable="false" />
-          <Property Name="EMAIL" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar2" MaxLength="256" />
+          <Property Name="EMAILCONFIRMED" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="PASSWORDHASH" Type="nvarchar2" MaxLength="256" />
+          <Property Name="SECURITYSTAMP" Type="nvarchar2" MaxLength="256" />
+          <Property Name="PHONENUMBER" Type="nvarchar2" MaxLength="256" />
+          <Property Name="PHONENUMBERCONFIRMED" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="TWOFACTORENABLED" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LOCKOUTENDDATEUTC" Type="timestamp" Precision="6" />
+          <Property Name="LOCKOUTENABLED" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ACCESSFAILEDCOUNT" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar2" MaxLength="256" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="100" />
           <Property Name="REGISTRATION_DATE" Type="date" />
           <Property Name="LAST_ACCESS" Type="date" />
           <Property Name="FIDELITY_POINTS" Type="number" Precision="38" Scale="0" />
@@ -126,10 +119,10 @@ avviso 6006: Il facet 'Precision' con valore '0' non è compreso nell'intervallo
             <PropertyRef Name="ID_RESERVATION" />
           </Key>
           <Property Name="ID_RESERVATION" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_CUSTOMER" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_SCREENING" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="RESERVATION_DATE" Type="timestamp" Precision="6" />
           <Property Name="ID_SEAT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USER" Type="nvarchar2" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="SCREENINGS">
           <Key>
@@ -141,6 +134,7 @@ avviso 6006: Il facet 'Precision' con valore '0' non è compreso nell'intervallo
           <Property Name="PRICE" Type="number" Precision="2" Scale="2" />
           <Property Name="REDUCTION_PCT" Type="number" Precision="3" Scale="0" />
           <Property Name="REDUCTED_PRICE" Type="number" Precision="2" Scale="2" />
+          <Property Name="ID_THEATER" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="SEATS">
           <Key>
@@ -171,15 +165,27 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'IT
           <Property Name="ATTORI" Type="varchar2" MaxLength="4000" />
           <Property Name="CATEGORIA" Type="varchar2" MaxLength="4000" />
         </EntityType>
-        <Association Name="FK_CUSTOMERS">
-          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+        <Association Name="FK_ID_THEATER">
+          <End Role="THEATERS" Type="Self.THEATERS" Multiplicity="1" />
+          <End Role="SCREENINGS" Type="Self.SCREENINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEATERS">
+              <PropertyRef Name="ID_THEATER" />
+            </Principal>
+            <Dependent Role="SCREENINGS">
+              <PropertyRef Name="ID_THEATER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_USER">
+          <End Role="ASPNETUSERS" Type="Self.ASPNETUSERS" Multiplicity="1" />
           <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CUSTOMERS">
-              <PropertyRef Name="ID_CUSTOMER" />
+            <Principal Role="ASPNETUSERS">
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RESERVATIONS">
-              <PropertyRef Name="ID_CUSTOMER" />
+              <PropertyRef Name="ID_USER" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -285,14 +291,13 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'IT
         <Function Name="GET_GENRES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ITS_GROUP2" ReturnType="varchar2">
           <Parameter Name="FILM_ID" Type="number" Mode="In" />
         </Function>
-        <EntityContainer Name="FlipperNSStoreContainer">
+        <EntityContainer Name="FlipperModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="ITS_GROUP2" store:Type="Tables" />
           <EntitySet Name="ACTORS" EntityType="Self.ACTORS" Schema="ITS_GROUP2" store:Type="Tables" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="ITS_GROUP2" store:Type="Tables" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="ITS_GROUP2" store:Type="Tables" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="ITS_GROUP2" store:Type="Tables" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="ITS_GROUP2" store:Type="Tables" />
-          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="ASPNETROLES" EntityType="Self.ASPNETROLES" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="ASPNETUSERCLAIMS" EntityType="Self.ASPNETUSERCLAIMS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="ASPNETUSERROLES" EntityType="Self.ASPNETUSERROLES" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="ASPNETUSERS" EntityType="Self.ASPNETUSERS" Schema="ITS_GROUP2" store:Type="Tables" />
           <EntitySet Name="FIDELITY_BONUS" EntityType="Self.FIDELITY_BONUS" Schema="ITS_GROUP2" store:Type="Tables" />
           <EntitySet Name="FILM_ACTOR" EntityType="Self.FILM_ACTOR" Schema="ITS_GROUP2" store:Type="Tables" />
           <EntitySet Name="FILM_GENRE" EntityType="Self.FILM_GENRE" Schema="ITS_GROUP2" store:Type="Tables" />
@@ -311,8 +316,12 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'IT
 "VW_FILM_CATALOG"."CATEGORIA" AS "CATEGORIA"
 FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_CUSTOMERS" Association="Self.FK_CUSTOMERS">
-            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          <AssociationSet Name="FK_ID_THEATER" Association="Self.FK_ID_THEATER">
+            <End Role="THEATERS" EntitySet="THEATERS" />
+            <End Role="SCREENINGS" EntitySet="SCREENINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_USER" Association="Self.FK_ID_USER">
+            <End Role="ASPNETUSERS" EntitySet="ASPNETUSERS" />
             <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
           </AssociationSet>
           <AssociationSet Name="FK_RESERVATIONS" Association="Self.FK_RESERVATIONS">
@@ -352,7 +361,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FlipperNS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FlipperModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -372,60 +381,53 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
           <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="FILM_ACTOR" Relationship="Self.SYS_C0013642" FromRole="ACTORS" ToRole="FILM_ACTOR" />
         </EntityType>
-        <EntityType Name="AspNetRoles">
+        <EntityType Name="ASPNETROLES">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="AspNetUserClaims">
+        <EntityType Name="ASPNETUSERCLAIMS">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ClaimType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CLAIMTYPE" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CLAIMVALUE" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="AspNetUserRoles">
+        <EntityType Name="ASPNETUSERROLES">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="ROLEID" />
           </Key>
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USERID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ROLEID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="AspNetUsers">
+        <EntityType Name="ASPNETUSERS">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="6" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CUSTOMERS">
-          <Key>
-            <PropertyRef Name="ID_CUSTOMER" />
-          </Key>
-          <Property Name="ID_CUSTOMER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EMAILCONFIRMED" Type="Boolean" Nullable="false" />
+          <Property Name="PASSWORDHASH" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SECURITYSTAMP" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PHONENUMBER" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PHONENUMBERCONFIRMED" Type="Boolean" Nullable="false" />
+          <Property Name="TWOFACTORENABLED" Type="Boolean" Nullable="false" />
+          <Property Name="LOCKOUTENDDATEUTC" Type="DateTime" Precision="6" />
+          <Property Name="LOCKOUTENABLED" Type="Boolean" Nullable="false" />
+          <Property Name="ACCESSFAILEDCOUNT" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="REGISTRATION_DATE" Type="DateTime" />
           <Property Name="LAST_ACCESS" Type="DateTime" />
           <Property Name="FIDELITY_POINTS" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="IS_ACTIVE" Type="Boolean" />
-          <NavigationProperty Name="RESERVATIONS" Relationship="Self.FK_CUSTOMERS" FromRole="CUSTOMERS" ToRole="RESERVATIONS" />
+          <NavigationProperty Name="RESERVATIONS" Relationship="Self.FK_ID_USER" FromRole="ASPNETUSERS" ToRole="RESERVATIONS" />
         </EntityType>
         <EntityType Name="FIDELITY_BONUS">
           <Key>
@@ -482,11 +484,11 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             <PropertyRef Name="ID_RESERVATION" />
           </Key>
           <Property Name="ID_RESERVATION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_CUSTOMER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_SCREENING" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="RESERVATION_DATE" Type="DateTime" Precision="6" />
           <Property Name="ID_SEAT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_CUSTOMERS" FromRole="RESERVATIONS" ToRole="CUSTOMERS" />
+          <Property Name="ID_USER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ASPNETUSERS" Relationship="Self.FK_ID_USER" FromRole="RESERVATIONS" ToRole="ASPNETUSERS" />
           <NavigationProperty Name="SEATS" Relationship="Self.FK_RESERVATIONS" FromRole="RESERVATIONS" ToRole="SEATS" />
           <NavigationProperty Name="SCREENINGS" Relationship="Self.FK_SCREENINGS" FromRole="RESERVATIONS" ToRole="SCREENINGS" />
         </EntityType>
@@ -500,8 +502,10 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
           <Property Name="PRICE" Type="Decimal" Precision="2" Scale="2" />
           <Property Name="REDUCTION_PCT" Type="Byte" />
           <Property Name="REDUCTED_PRICE" Type="Decimal" Precision="2" Scale="2" />
+          <Property Name="ID_THEATER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="FILMS" Relationship="Self.SYS_C0013866" FromRole="SCREENINGS" ToRole="FILMS" />
           <NavigationProperty Name="RESERVATIONS" Relationship="Self.FK_SCREENINGS" FromRole="SCREENINGS" ToRole="RESERVATIONS" />
+          <NavigationProperty Name="THEATERS" Relationship="Self.FK_ID_THEATER" FromRole="SCREENINGS" ToRole="THEATERS" />
         </EntityType>
         <EntityType Name="SEATS">
           <Key>
@@ -519,6 +523,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
           </Key>
           <Property Name="ID_THEATER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SCREENINGS" Relationship="Self.FK_ID_THEATER" FromRole="THEATERS" ToRole="SCREENINGS" />
           <NavigationProperty Name="SEATS" Relationship="Self.SYS_C0013963" FromRole="THEATERS" ToRole="SEATS" />
         </EntityType>
         <EntityType Name="VW_FILM_CATALOG">
@@ -544,15 +549,15 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CUSTOMERS">
-          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+        <Association Name="FK_ID_USER">
+          <End Role="ASPNETUSERS" Type="Self.ASPNETUSERS" Multiplicity="1" />
           <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CUSTOMERS">
-              <PropertyRef Name="ID_CUSTOMER" />
+            <Principal Role="ASPNETUSERS">
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="RESERVATIONS">
-              <PropertyRef Name="ID_CUSTOMER" />
+              <PropertyRef Name="ID_USER" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -628,6 +633,18 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ID_THEATER">
+          <End Role="THEATERS" Type="Self.THEATERS" Multiplicity="1" />
+          <End Role="SCREENINGS" Type="Self.SCREENINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEATERS">
+              <PropertyRef Name="ID_THEATER" />
+            </Principal>
+            <Dependent Role="SCREENINGS">
+              <PropertyRef Name="ID_THEATER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="SYS_C0013963">
           <End Role="THEATERS" Type="Self.THEATERS" Multiplicity="1" />
           <End Role="SEATS" Type="Self.SEATS" Multiplicity="*" />
@@ -640,14 +657,13 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FlipperDB" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="ACTORS" EntityType="Self.ACTORS" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" />
+          <EntitySet Name="ASPNETROLES" EntityType="Self.ASPNETROLES" />
+          <EntitySet Name="ASPNETUSERCLAIMS" EntityType="Self.ASPNETUSERCLAIMS" />
+          <EntitySet Name="ASPNETUSERROLES" EntityType="Self.ASPNETUSERROLES" />
+          <EntitySet Name="ASPNETUSERS" EntityType="Self.ASPNETUSERS" />
           <EntitySet Name="FIDELITY_BONUS" EntityType="Self.FIDELITY_BONUS" />
           <EntitySet Name="FILM_ACTOR" EntityType="Self.FILM_ACTOR" />
           <EntitySet Name="FILM_GENRE" EntityType="Self.FILM_GENRE" />
@@ -662,8 +678,8 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             <End Role="ACTORS" EntitySet="ACTORS" />
             <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
           </AssociationSet>
-          <AssociationSet Name="FK_CUSTOMERS" Association="Self.FK_CUSTOMERS">
-            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+          <AssociationSet Name="FK_ID_USER" Association="Self.FK_ID_USER">
+            <End Role="ASPNETUSERS" EntitySet="ASPNETUSERS" />
             <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
           </AssociationSet>
           <AssociationSet Name="SYS_C0013641" Association="Self.SYS_C0013641">
@@ -690,6 +706,10 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             <End Role="SCREENINGS" EntitySet="SCREENINGS" />
             <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
           </AssociationSet>
+          <AssociationSet Name="FK_ID_THEATER" Association="Self.FK_ID_THEATER">
+            <End Role="THEATERS" EntitySet="THEATERS" />
+            <End Role="SCREENINGS" EntitySet="SCREENINGS" />
+          </AssociationSet>
           <AssociationSet Name="SYS_C0013963" Association="Self.SYS_C0013963">
             <End Role="THEATERS" EntitySet="THEATERS" />
             <End Role="SEATS" EntitySet="SEATS" />
@@ -700,9 +720,9 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FlipperNSStoreContainer" CdmEntityContainer="FlipperDB">
+        <EntityContainerMapping StorageEntityContainer="FlipperModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="FlipperNS.C__MigrationHistory">
+            <EntityTypeMapping TypeName="FlipperModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -712,7 +732,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACTORS">
-            <EntityTypeMapping TypeName="FlipperNS.ACTORS">
+            <EntityTypeMapping TypeName="FlipperModel.ACTORS">
               <MappingFragment StoreEntitySet="ACTORS">
                 <ScalarProperty Name="ID_ACTOR" ColumnName="ID_ACTOR" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -720,57 +740,49 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="FlipperNS.AspNetRoles">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+          <EntitySetMapping Name="ASPNETROLES">
+            <EntityTypeMapping TypeName="FlipperModel.ASPNETROLES">
+              <MappingFragment StoreEntitySet="ASPNETROLES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="FlipperNS.AspNetUserClaims">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <EntitySetMapping Name="ASPNETUSERCLAIMS">
+            <EntityTypeMapping TypeName="FlipperModel.ASPNETUSERCLAIMS">
+              <MappingFragment StoreEntitySet="ASPNETUSERCLAIMS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="CLAIMTYPE" ColumnName="CLAIMTYPE" />
+                <ScalarProperty Name="CLAIMVALUE" ColumnName="CLAIMVALUE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserRoles">
-            <EntityTypeMapping TypeName="FlipperNS.AspNetUserRoles">
-              <MappingFragment StoreEntitySet="AspNetUserRoles">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <EntitySetMapping Name="ASPNETUSERROLES">
+            <EntityTypeMapping TypeName="FlipperModel.ASPNETUSERROLES">
+              <MappingFragment StoreEntitySet="ASPNETUSERROLES">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="FlipperNS.AspNetUsers">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CUSTOMERS">
-            <EntityTypeMapping TypeName="FlipperNS.CUSTOMERS">
-              <MappingFragment StoreEntitySet="CUSTOMERS">
-                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+          <EntitySetMapping Name="ASPNETUSERS">
+            <EntityTypeMapping TypeName="FlipperModel.ASPNETUSERS">
+              <MappingFragment StoreEntitySet="ASPNETUSERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="EMAILCONFIRMED" ColumnName="EMAILCONFIRMED" />
+                <ScalarProperty Name="PASSWORDHASH" ColumnName="PASSWORDHASH" />
+                <ScalarProperty Name="SECURITYSTAMP" ColumnName="SECURITYSTAMP" />
+                <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+                <ScalarProperty Name="PHONENUMBERCONFIRMED" ColumnName="PHONENUMBERCONFIRMED" />
+                <ScalarProperty Name="TWOFACTORENABLED" ColumnName="TWOFACTORENABLED" />
+                <ScalarProperty Name="LOCKOUTENDDATEUTC" ColumnName="LOCKOUTENDDATEUTC" />
+                <ScalarProperty Name="LOCKOUTENABLED" ColumnName="LOCKOUTENABLED" />
+                <ScalarProperty Name="ACCESSFAILEDCOUNT" ColumnName="ACCESSFAILEDCOUNT" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="REGISTRATION_DATE" ColumnName="REGISTRATION_DATE" />
                 <ScalarProperty Name="LAST_ACCESS" ColumnName="LAST_ACCESS" />
                 <ScalarProperty Name="FIDELITY_POINTS" ColumnName="FIDELITY_POINTS" />
@@ -779,7 +791,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FIDELITY_BONUS">
-            <EntityTypeMapping TypeName="FlipperNS.FIDELITY_BONUS">
+            <EntityTypeMapping TypeName="FlipperModel.FIDELITY_BONUS">
               <MappingFragment StoreEntitySet="FIDELITY_BONUS">
                 <ScalarProperty Name="ID_FIDELITY_BONUS" ColumnName="ID_FIDELITY_BONUS" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -789,7 +801,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FILM_ACTOR">
-            <EntityTypeMapping TypeName="FlipperNS.FILM_ACTOR">
+            <EntityTypeMapping TypeName="FlipperModel.FILM_ACTOR">
               <MappingFragment StoreEntitySet="FILM_ACTOR">
                 <ScalarProperty Name="ID_FILM_ACTOR" ColumnName="ID_FILM_ACTOR" />
                 <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
@@ -798,7 +810,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FILM_GENRE">
-            <EntityTypeMapping TypeName="FlipperNS.FILM_GENRE">
+            <EntityTypeMapping TypeName="FlipperModel.FILM_GENRE">
               <MappingFragment StoreEntitySet="FILM_GENRE">
                 <ScalarProperty Name="ID_FILM_GENRE" ColumnName="ID_FILM_GENRE" />
                 <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
@@ -807,7 +819,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FILMS">
-            <EntityTypeMapping TypeName="FlipperNS.FILMS">
+            <EntityTypeMapping TypeName="FlipperModel.FILMS">
               <MappingFragment StoreEntitySet="FILMS">
                 <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -817,7 +829,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GENRES">
-            <EntityTypeMapping TypeName="FlipperNS.GENRES">
+            <EntityTypeMapping TypeName="FlipperModel.GENRES">
               <MappingFragment StoreEntitySet="GENRES">
                 <ScalarProperty Name="ID_GENRE" ColumnName="ID_GENRE" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -826,18 +838,18 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RESERVATIONS">
-            <EntityTypeMapping TypeName="FlipperNS.RESERVATIONS">
+            <EntityTypeMapping TypeName="FlipperModel.RESERVATIONS">
               <MappingFragment StoreEntitySet="RESERVATIONS">
                 <ScalarProperty Name="ID_RESERVATION" ColumnName="ID_RESERVATION" />
-                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
                 <ScalarProperty Name="ID_SCREENING" ColumnName="ID_SCREENING" />
                 <ScalarProperty Name="RESERVATION_DATE" ColumnName="RESERVATION_DATE" />
                 <ScalarProperty Name="ID_SEAT" ColumnName="ID_SEAT" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SCREENINGS">
-            <EntityTypeMapping TypeName="FlipperNS.SCREENINGS">
+            <EntityTypeMapping TypeName="FlipperModel.SCREENINGS">
               <MappingFragment StoreEntitySet="SCREENINGS">
                 <ScalarProperty Name="ID_SCREENING" ColumnName="ID_SCREENING" />
                 <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
@@ -845,11 +857,12 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />
                 <ScalarProperty Name="REDUCTION_PCT" ColumnName="REDUCTION_PCT" />
                 <ScalarProperty Name="REDUCTED_PRICE" ColumnName="REDUCTED_PRICE" />
+                <ScalarProperty Name="ID_THEATER" ColumnName="ID_THEATER" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SEATS">
-            <EntityTypeMapping TypeName="FlipperNS.SEATS">
+            <EntityTypeMapping TypeName="FlipperModel.SEATS">
               <MappingFragment StoreEntitySet="SEATS">
                 <ScalarProperty Name="ID_SEAT" ColumnName="ID_SEAT" />
                 <ScalarProperty Name="CODE" ColumnName="CODE" />
@@ -858,7 +871,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="THEATERS">
-            <EntityTypeMapping TypeName="FlipperNS.THEATERS">
+            <EntityTypeMapping TypeName="FlipperModel.THEATERS">
               <MappingFragment StoreEntitySet="THEATERS">
                 <ScalarProperty Name="ID_THEATER" ColumnName="ID_THEATER" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -866,7 +879,7 @@ FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VW_FILM_CATALOG">
-            <EntityTypeMapping TypeName="FlipperNS.VW_FILM_CATALOG">
+            <EntityTypeMapping TypeName="FlipperModel.VW_FILM_CATALOG">
               <MappingFragment StoreEntitySet="VW_FILM_CATALOG">
                 <ScalarProperty Name="NOME" ColumnName="NOME" />
                 <ScalarProperty Name="RILASCIATO" ColumnName="RILASCIATO" />

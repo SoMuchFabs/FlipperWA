@@ -26,9 +26,11 @@ namespace FlipperAPI
         public Nullable<decimal> PRICE { get; set; }
         public Nullable<byte> REDUCTION_PCT { get; set; }
         public Nullable<decimal> REDUCTED_PRICE { get; set; }
+        public decimal ID_THEATER { get; set; }
     
         public virtual FILMS FILMS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESERVATIONS> RESERVATIONS { get; set; }
+        public virtual THEATERS THEATERS { get; set; }
     }
 }

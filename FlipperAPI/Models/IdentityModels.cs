@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -11,7 +12,12 @@ namespace FlipperAPI.Models
     // È possibile aggiungere dati del profilo per l'utente aggiungendo altre proprietà alla classe ApplicationUser. Per altre informazioni, vedere https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
     {
-        //public int FidelityPoints { get; set; }
+        public decimal FIDELITY_POINTS { get; set; }
+        public string NAME { get; set; }
+        public string SURNAME { get; set; }
+        public DateTime REGISTRATION_DATE { get; set; }
+        public DateTime LAST_ACCESS { get; set; }
+        public bool IS_ACTIVE { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
@@ -66,11 +72,11 @@ namespace FlipperAPI.Models
             modelBuilder.Entity<THEATERS>().HasKey(c => c.ID_THEATER);
 
             modelBuilder.Entity<ACTORS>().ToTable("ACTORS");
-            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers");
-            modelBuilder.Entity<IdentityRole>().ToTable("AspNetRoles");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("AspNetUserRoles");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("AspNetUserLogins");
+            modelBuilder.Entity<ApplicationUser>().ToTable("ASPNETUSERS");
+            modelBuilder.Entity<IdentityRole>().ToTable("ASPNETROLES");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("ASPNETUSERROLES");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("ASPNETUSERCLAIMS");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("ASPNETUSERLOGINS");
 
         }
     }

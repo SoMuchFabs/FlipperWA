@@ -12,11 +12,11 @@ namespace FlipperAPI
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserClaims
+    public partial class ASPNETUSERCLAIMS
     {
-        public int Id { get; set; }
-        public string UserId { get; set; }
-        public string ClaimType { get; set; }
-        public string ClaimValue { get; set; }
+        public int ID { get; set; }
+        public string USERID { get; set; }
+        public string CLAIMTYPE { get; set; }
+        public string CLAIMVALUE { get; set; }
     }
 }

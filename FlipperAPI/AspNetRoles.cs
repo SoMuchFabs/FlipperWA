@@ -12,9 +12,9 @@ namespace FlipperAPI
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRoles
+    public partial class ASPNETROLES
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public string ID { get; set; }
+        public string NAME { get; set; }
     }
 }

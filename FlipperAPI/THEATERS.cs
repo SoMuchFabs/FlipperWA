@@ -17,12 +17,15 @@ namespace FlipperAPI
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public THEATERS()
         {
+            this.SCREENINGS = new HashSet<SCREENINGS>();
             this.SEATS = new HashSet<SEATS>();
         }
     
         public decimal ID_THEATER { get; set; }
         public string NAME { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SCREENINGS> SCREENINGS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SEATS> SEATS { get; set; }
     }

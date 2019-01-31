@@ -12,19 +12,34 @@ namespace FlipperAPI
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUsers
+    public partial class ASPNETUSERS
     {
-        public string Id { get; set; }
-        public string Email { get; set; }
-        public bool EmailConfirmed { get; set; }
-        public string PasswordHash { get; set; }
-        public string SecurityStamp { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool PhoneNumberConfirmed { get; set; }
-        public bool TwoFactorEnabled { get; set; }
-        public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
-        public bool LockoutEnabled { get; set; }
-        public int AccessFailedCount { get; set; }
-        public string UserName { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ASPNETUSERS()
+        {
+            this.RESERVATIONS = new HashSet<RESERVATIONS>();
+        }
+    
+        public string ID { get; set; }
+        public string EMAIL { get; set; }
+        public bool EMAILCONFIRMED { get; set; }
+        public string PASSWORDHASH { get; set; }
+        public string SECURITYSTAMP { get; set; }
+        public string PHONENUMBER { get; set; }
+        public bool PHONENUMBERCONFIRMED { get; set; }
+        public bool TWOFACTORENABLED { get; set; }
+        public Nullable<System.DateTime> LOCKOUTENDDATEUTC { get; set; }
+        public bool LOCKOUTENABLED { get; set; }
+        public int ACCESSFAILEDCOUNT { get; set; }
+        public string USERNAME { get; set; }
+        public string NAME { get; set; }
+        public string SURNAME { get; set; }
+        public Nullable<System.DateTime> REGISTRATION_DATE { get; set; }
+        public Nullable<System.DateTime> LAST_ACCESS { get; set; }
+        public Nullable<decimal> FIDELITY_POINTS { get; set; }
+        public Nullable<bool> IS_ACTIVE { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RESERVATIONS> RESERVATIONS { get; set; }
     }
 }

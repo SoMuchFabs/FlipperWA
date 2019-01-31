@@ -4,33 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9a67534f508e4e46b274f833f5e09129" Name="Diagram1" ZoomLevel="78">
-        <EntityTypeShape EntityType="FlipperNS.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.ACTORS" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.AspNetRoles" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.AspNetUserClaims" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.AspNetUserRoles" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.AspNetUsers" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.CUSTOMERS" Width="1.5" PointX="8.5" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.FIDELITY_BONUS" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.FILM_ACTOR" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.FILM_GENRE" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.FILMS" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.GENRES" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.RESERVATIONS" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.SCREENINGS" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.SEATS" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.THEATERS" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FlipperNS.VW_FILM_CATALOG" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="FlipperNS.SYS_C0013642" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.FK_CUSTOMERS" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.SYS_C0013641" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.SYS_C0013632" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.SYS_C0013633" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.SYS_C0013866" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.FK_RESERVATIONS" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.FK_SCREENINGS" ManuallyRouted="false" />
-        <AssociationConnector Association="FlipperNS.SYS_C0013963" ManuallyRouted="false" />
+      <Diagram DiagramId="29ea0f8f35f64fc1b052a11062608528" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="FlipperModel.C__MigrationHistory" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.ACTORS" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.ASPNETROLES" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.ASPNETUSERCLAIMS" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.ASPNETUSERROLES" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.ASPNETUSERS" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.FIDELITY_BONUS" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.FILM_ACTOR" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.FILM_GENRE" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.FILMS" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.GENRES" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.RESERVATIONS" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.SCREENINGS" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.SEATS" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.THEATERS" Width="1.5" PointX="3.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlipperModel.VW_FILM_CATALOG" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="FlipperModel.SYS_C0013642" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.FK_ID_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.SYS_C0013641" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.SYS_C0013632" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.SYS_C0013633" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.SYS_C0013866" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.FK_RESERVATIONS" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.FK_SCREENINGS" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.FK_ID_THEATER" ManuallyRouted="false" />
+        <AssociationConnector Association="FlipperModel.SYS_C0013963" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
