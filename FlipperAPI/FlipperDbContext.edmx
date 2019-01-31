@@ -1,0 +1,902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FlipperNS.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar2" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar2" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="blob" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar2" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACTORS">
+          <Key>
+            <PropertyRef Name="ID_ACTOR" />
+          </Key>
+          <Property Name="ID_ACTOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar2" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar2" MaxLength="256" />
+          <Property Name="ClaimValue" Type="nvarchar2" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar2" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar2" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar2" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar2" MaxLength="256" />
+          <Property Name="SecurityStamp" Type="nvarchar2" MaxLength="256" />
+          <Property Name="PhoneNumber" Type="nvarchar2" MaxLength="256" />
+          <Property Name="PhoneNumberConfirmed" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="timestamp" Precision="6" />
+          <Property Name="LockoutEnabled" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar2" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID_CUSTOMER" />
+          </Key>
+          <Property Name="ID_CUSTOMER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="REGISTRATION_DATE" Type="date" />
+          <Property Name="LAST_ACCESS" Type="date" />
+          <Property Name="FIDELITY_POINTS" Type="number" Precision="38" Scale="0" />
+          <Property Name="IS_ACTIVE" Type="number" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="FIDELITY_BONUS">
+          <Key>
+            <PropertyRef Name="ID_FIDELITY_BONUS" />
+          </Key>
+          <Property Name="ID_FIDELITY_BONUS" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="500" />
+          <Property Name="COST" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM_ACTOR">
+          <Key>
+            <PropertyRef Name="ID_FILM_ACTOR" />
+          </Key>
+          <Property Name="ID_FILM_ACTOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_FILM" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTOR" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM_GENRE">
+          <Key>
+            <PropertyRef Name="ID_FILM_GENRE" />
+          </Key>
+          <Property Name="ID_FILM_GENRE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_FILM" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_GENRE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errori trovati durante la generazione:
+avviso 6006: Il facet 'Precision' con valore '0' non è compreso nell'intervallo 1-251 specificato dalla descrizione del facet.  La colonna 'DURATION' nella tabella 'ITS_GROUP2.FILMS' è stata esclusa.-->
+        <EntityType Name="FILMS">
+          <Key>
+            <PropertyRef Name="ID_FILM" />
+          </Key>
+          <Property Name="ID_FILM" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="RELEASE_DATE" Type="date" Nullable="false" />
+          <Property Name="PLOT" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GENRES">
+          <Key>
+            <PropertyRef Name="ID_GENRE" />
+          </Key>
+          <Property Name="ID_GENRE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RESERVATIONS">
+          <Key>
+            <PropertyRef Name="ID_RESERVATION" />
+          </Key>
+          <Property Name="ID_RESERVATION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CUSTOMER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SCREENING" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RESERVATION_DATE" Type="timestamp" Precision="6" />
+          <Property Name="ID_SEAT" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SCREENINGS">
+          <Key>
+            <PropertyRef Name="ID_SCREENING" />
+          </Key>
+          <Property Name="ID_SCREENING" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_FILM" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SCREENING_DATE" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="PRICE" Type="number" Precision="2" Scale="2" />
+          <Property Name="REDUCTION_PCT" Type="number" Precision="3" Scale="0" />
+          <Property Name="REDUCTED_PRICE" Type="number" Precision="2" Scale="2" />
+        </EntityType>
+        <EntityType Name="SEATS">
+          <Key>
+            <PropertyRef Name="ID_SEAT" />
+          </Key>
+          <Property Name="ID_SEAT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CODE" Type="varchar2" MaxLength="2" Nullable="false" />
+          <Property Name="ID_THEATER" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="THEATERS">
+          <Key>
+            <PropertyRef Name="ID_THEATER" />
+          </Key>
+          <Property Name="ID_THEATER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errori trovati durante la generazione:
+avviso 6006: Il facet 'Precision' con valore '0' non è compreso nell'intervallo 1-251 specificato dalla descrizione del facet.  La colonna 'DURATA' nella tabella 'ITS_GROUP2.VW_FILM_CATALOG' è stata esclusa.
+avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'ITS_GROUP2.VW_FILM_CATALOG'. La chiave è stata dedotta e la definizione è stata creata come tabella/visualizzazione di sola lettura.-->
+        <EntityType Name="VW_FILM_CATALOG">
+          <Key>
+            <PropertyRef Name="NOME" />
+            <PropertyRef Name="RILASCIATO" />
+          </Key>
+          <Property Name="NOME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="RILASCIATO" Type="date" Nullable="false" />
+          <Property Name="TRAMA" Type="varchar2" MaxLength="500" />
+          <Property Name="ATTORI" Type="varchar2" MaxLength="4000" />
+          <Property Name="CATEGORIA" Type="varchar2" MaxLength="4000" />
+        </EntityType>
+        <Association Name="FK_CUSTOMERS">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Principal>
+            <Dependent Role="RESERVATIONS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATIONS">
+          <End Role="SEATS" Type="Self.SEATS" Multiplicity="1" />
+          <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEATS">
+              <PropertyRef Name="ID_SEAT" />
+            </Principal>
+            <Dependent Role="RESERVATIONS">
+              <PropertyRef Name="ID_SEAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCREENINGS">
+          <End Role="SCREENINGS" Type="Self.SCREENINGS" Multiplicity="1" />
+          <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCREENINGS">
+              <PropertyRef Name="ID_SCREENING" />
+            </Principal>
+            <Dependent Role="RESERVATIONS">
+              <PropertyRef Name="ID_SCREENING" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013632">
+          <End Role="FILMS" Type="Self.FILMS" Multiplicity="1" />
+          <End Role="FILM_GENRE" Type="Self.FILM_GENRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILMS">
+              <PropertyRef Name="ID_FILM" />
+            </Principal>
+            <Dependent Role="FILM_GENRE">
+              <PropertyRef Name="ID_FILM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013633">
+          <End Role="GENRES" Type="Self.GENRES" Multiplicity="1" />
+          <End Role="FILM_GENRE" Type="Self.FILM_GENRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENRES">
+              <PropertyRef Name="ID_GENRE" />
+            </Principal>
+            <Dependent Role="FILM_GENRE">
+              <PropertyRef Name="ID_GENRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013641">
+          <End Role="FILMS" Type="Self.FILMS" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILMS">
+              <PropertyRef Name="ID_FILM" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="ID_FILM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013642">
+          <End Role="ACTORS" Type="Self.ACTORS" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTORS">
+              <PropertyRef Name="ID_ACTOR" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="ID_ACTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013866">
+          <End Role="FILMS" Type="Self.FILMS" Multiplicity="1" />
+          <End Role="SCREENINGS" Type="Self.SCREENINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILMS">
+              <PropertyRef Name="ID_FILM" />
+            </Principal>
+            <Dependent Role="SCREENINGS">
+              <PropertyRef Name="ID_FILM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013963">
+          <End Role="THEATERS" Type="Self.THEATERS" Multiplicity="1" />
+          <End Role="SEATS" Type="Self.SEATS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEATERS">
+              <PropertyRef Name="ID_THEATER" />
+            </Principal>
+            <Dependent Role="SEATS">
+              <PropertyRef Name="ID_THEATER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GET_ACTORS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ITS_GROUP2" ReturnType="varchar2">
+          <Parameter Name="FILM_ID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="GET_GENRES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ITS_GROUP2" ReturnType="varchar2">
+          <Parameter Name="FILM_ID" Type="number" Mode="In" />
+        </Function>
+        <EntityContainer Name="FlipperNSStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="ACTORS" EntityType="Self.ACTORS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="FIDELITY_BONUS" EntityType="Self.FIDELITY_BONUS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="FILM_ACTOR" EntityType="Self.FILM_ACTOR" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="FILM_GENRE" EntityType="Self.FILM_GENRE" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="FILMS" EntityType="Self.FILMS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="GENRES" EntityType="Self.GENRES" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="RESERVATIONS" EntityType="Self.RESERVATIONS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="SCREENINGS" EntityType="Self.SCREENINGS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="SEATS" EntityType="Self.SEATS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="THEATERS" EntityType="Self.THEATERS" Schema="ITS_GROUP2" store:Type="Tables" />
+          <EntitySet Name="VW_FILM_CATALOG" EntityType="Self.VW_FILM_CATALOG" store:Type="Views" store:Schema="ITS_GROUP2">
+            <DefiningQuery>SELECT 
+"VW_FILM_CATALOG"."NOME" AS "NOME", 
+"VW_FILM_CATALOG"."RILASCIATO" AS "RILASCIATO", 
+"VW_FILM_CATALOG"."TRAMA" AS "TRAMA", 
+"VW_FILM_CATALOG"."ATTORI" AS "ATTORI", 
+"VW_FILM_CATALOG"."CATEGORIA" AS "CATEGORIA"
+FROM "ITS_GROUP2"."VW_FILM_CATALOG" "VW_FILM_CATALOG"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CUSTOMERS" Association="Self.FK_CUSTOMERS">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATIONS" Association="Self.FK_RESERVATIONS">
+            <End Role="SEATS" EntitySet="SEATS" />
+            <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCREENINGS" Association="Self.FK_SCREENINGS">
+            <End Role="SCREENINGS" EntitySet="SCREENINGS" />
+            <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013632" Association="Self.SYS_C0013632">
+            <End Role="FILMS" EntitySet="FILMS" />
+            <End Role="FILM_GENRE" EntitySet="FILM_GENRE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013633" Association="Self.SYS_C0013633">
+            <End Role="GENRES" EntitySet="GENRES" />
+            <End Role="FILM_GENRE" EntitySet="FILM_GENRE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013641" Association="Self.SYS_C0013641">
+            <End Role="FILMS" EntitySet="FILMS" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013642" Association="Self.SYS_C0013642">
+            <End Role="ACTORS" EntitySet="ACTORS" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013866" Association="Self.SYS_C0013866">
+            <End Role="FILMS" EntitySet="FILMS" />
+            <End Role="SCREENINGS" EntitySet="SCREENINGS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013963" Association="Self.SYS_C0013963">
+            <End Role="THEATERS" EntitySet="THEATERS" />
+            <End Role="SEATS" EntitySet="SEATS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FlipperNS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACTORS">
+          <Key>
+            <PropertyRef Name="ID_ACTOR" />
+          </Key>
+          <Property Name="ID_ACTOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FILM_ACTOR" Relationship="Self.SYS_C0013642" FromRole="ACTORS" ToRole="FILM_ACTOR" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="6" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID_CUSTOMER" />
+          </Key>
+          <Property Name="ID_CUSTOMER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REGISTRATION_DATE" Type="DateTime" />
+          <Property Name="LAST_ACCESS" Type="DateTime" />
+          <Property Name="FIDELITY_POINTS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="IS_ACTIVE" Type="Boolean" />
+          <NavigationProperty Name="RESERVATIONS" Relationship="Self.FK_CUSTOMERS" FromRole="CUSTOMERS" ToRole="RESERVATIONS" />
+        </EntityType>
+        <EntityType Name="FIDELITY_BONUS">
+          <Key>
+            <PropertyRef Name="ID_FIDELITY_BONUS" />
+          </Key>
+          <Property Name="ID_FIDELITY_BONUS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="COST" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM_ACTOR">
+          <Key>
+            <PropertyRef Name="ID_FILM_ACTOR" />
+          </Key>
+          <Property Name="ID_FILM_ACTOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_FILM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ACTOR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="ACTORS" Relationship="Self.SYS_C0013642" FromRole="FILM_ACTOR" ToRole="ACTORS" />
+          <NavigationProperty Name="FILMS" Relationship="Self.SYS_C0013641" FromRole="FILM_ACTOR" ToRole="FILMS" />
+        </EntityType>
+        <EntityType Name="FILM_GENRE">
+          <Key>
+            <PropertyRef Name="ID_FILM_GENRE" />
+          </Key>
+          <Property Name="ID_FILM_GENRE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_FILM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_GENRE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="FILMS" Relationship="Self.SYS_C0013632" FromRole="FILM_GENRE" ToRole="FILMS" />
+          <NavigationProperty Name="GENRES" Relationship="Self.SYS_C0013633" FromRole="FILM_GENRE" ToRole="GENRES" />
+        </EntityType>
+        <EntityType Name="FILMS">
+          <Key>
+            <PropertyRef Name="ID_FILM" />
+          </Key>
+          <Property Name="ID_FILM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RELEASE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="PLOT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FILM_ACTOR" Relationship="Self.SYS_C0013641" FromRole="FILMS" ToRole="FILM_ACTOR" />
+          <NavigationProperty Name="FILM_GENRE" Relationship="Self.SYS_C0013632" FromRole="FILMS" ToRole="FILM_GENRE" />
+          <NavigationProperty Name="SCREENINGS" Relationship="Self.SYS_C0013866" FromRole="FILMS" ToRole="SCREENINGS" />
+        </EntityType>
+        <EntityType Name="GENRES">
+          <Key>
+            <PropertyRef Name="ID_GENRE" />
+          </Key>
+          <Property Name="ID_GENRE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FILM_GENRE" Relationship="Self.SYS_C0013633" FromRole="GENRES" ToRole="FILM_GENRE" />
+        </EntityType>
+        <EntityType Name="RESERVATIONS">
+          <Key>
+            <PropertyRef Name="ID_RESERVATION" />
+          </Key>
+          <Property Name="ID_RESERVATION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CUSTOMER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_SCREENING" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RESERVATION_DATE" Type="DateTime" Precision="6" />
+          <Property Name="ID_SEAT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_CUSTOMERS" FromRole="RESERVATIONS" ToRole="CUSTOMERS" />
+          <NavigationProperty Name="SEATS" Relationship="Self.FK_RESERVATIONS" FromRole="RESERVATIONS" ToRole="SEATS" />
+          <NavigationProperty Name="SCREENINGS" Relationship="Self.FK_SCREENINGS" FromRole="RESERVATIONS" ToRole="SCREENINGS" />
+        </EntityType>
+        <EntityType Name="SCREENINGS">
+          <Key>
+            <PropertyRef Name="ID_SCREENING" />
+          </Key>
+          <Property Name="ID_SCREENING" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_FILM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SCREENING_DATE" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="2" Scale="2" />
+          <Property Name="REDUCTION_PCT" Type="Byte" />
+          <Property Name="REDUCTED_PRICE" Type="Decimal" Precision="2" Scale="2" />
+          <NavigationProperty Name="FILMS" Relationship="Self.SYS_C0013866" FromRole="SCREENINGS" ToRole="FILMS" />
+          <NavigationProperty Name="RESERVATIONS" Relationship="Self.FK_SCREENINGS" FromRole="SCREENINGS" ToRole="RESERVATIONS" />
+        </EntityType>
+        <EntityType Name="SEATS">
+          <Key>
+            <PropertyRef Name="ID_SEAT" />
+          </Key>
+          <Property Name="ID_SEAT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_THEATER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="RESERVATIONS" Relationship="Self.FK_RESERVATIONS" FromRole="SEATS" ToRole="RESERVATIONS" />
+          <NavigationProperty Name="THEATERS" Relationship="Self.SYS_C0013963" FromRole="SEATS" ToRole="THEATERS" />
+        </EntityType>
+        <EntityType Name="THEATERS">
+          <Key>
+            <PropertyRef Name="ID_THEATER" />
+          </Key>
+          <Property Name="ID_THEATER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SEATS" Relationship="Self.SYS_C0013963" FromRole="THEATERS" ToRole="SEATS" />
+        </EntityType>
+        <EntityType Name="VW_FILM_CATALOG">
+          <Key>
+            <PropertyRef Name="NOME" />
+            <PropertyRef Name="RILASCIATO" />
+          </Key>
+          <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RILASCIATO" Type="DateTime" Nullable="false" />
+          <Property Name="TRAMA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ATTORI" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORIA" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="SYS_C0013642">
+          <End Role="ACTORS" Type="Self.ACTORS" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTORS">
+              <PropertyRef Name="ID_ACTOR" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="ID_ACTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMERS">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Principal>
+            <Dependent Role="RESERVATIONS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013641">
+          <End Role="FILMS" Type="Self.FILMS" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILMS">
+              <PropertyRef Name="ID_FILM" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="ID_FILM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013632">
+          <End Role="FILMS" Type="Self.FILMS" Multiplicity="1" />
+          <End Role="FILM_GENRE" Type="Self.FILM_GENRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILMS">
+              <PropertyRef Name="ID_FILM" />
+            </Principal>
+            <Dependent Role="FILM_GENRE">
+              <PropertyRef Name="ID_FILM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013633">
+          <End Role="GENRES" Type="Self.GENRES" Multiplicity="1" />
+          <End Role="FILM_GENRE" Type="Self.FILM_GENRE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENRES">
+              <PropertyRef Name="ID_GENRE" />
+            </Principal>
+            <Dependent Role="FILM_GENRE">
+              <PropertyRef Name="ID_GENRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013866">
+          <End Role="FILMS" Type="Self.FILMS" Multiplicity="1" />
+          <End Role="SCREENINGS" Type="Self.SCREENINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILMS">
+              <PropertyRef Name="ID_FILM" />
+            </Principal>
+            <Dependent Role="SCREENINGS">
+              <PropertyRef Name="ID_FILM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATIONS">
+          <End Role="SEATS" Type="Self.SEATS" Multiplicity="1" />
+          <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEATS">
+              <PropertyRef Name="ID_SEAT" />
+            </Principal>
+            <Dependent Role="RESERVATIONS">
+              <PropertyRef Name="ID_SEAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCREENINGS">
+          <End Role="SCREENINGS" Type="Self.SCREENINGS" Multiplicity="1" />
+          <End Role="RESERVATIONS" Type="Self.RESERVATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCREENINGS">
+              <PropertyRef Name="ID_SCREENING" />
+            </Principal>
+            <Dependent Role="RESERVATIONS">
+              <PropertyRef Name="ID_SCREENING" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0013963">
+          <End Role="THEATERS" Type="Self.THEATERS" Multiplicity="1" />
+          <End Role="SEATS" Type="Self.SEATS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEATERS">
+              <PropertyRef Name="ID_THEATER" />
+            </Principal>
+            <Dependent Role="SEATS">
+              <PropertyRef Name="ID_THEATER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FlipperDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ACTORS" EntityType="Self.ACTORS" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" />
+          <EntitySet Name="FIDELITY_BONUS" EntityType="Self.FIDELITY_BONUS" />
+          <EntitySet Name="FILM_ACTOR" EntityType="Self.FILM_ACTOR" />
+          <EntitySet Name="FILM_GENRE" EntityType="Self.FILM_GENRE" />
+          <EntitySet Name="FILMS" EntityType="Self.FILMS" />
+          <EntitySet Name="GENRES" EntityType="Self.GENRES" />
+          <EntitySet Name="RESERVATIONS" EntityType="Self.RESERVATIONS" />
+          <EntitySet Name="SCREENINGS" EntityType="Self.SCREENINGS" />
+          <EntitySet Name="SEATS" EntityType="Self.SEATS" />
+          <EntitySet Name="THEATERS" EntityType="Self.THEATERS" />
+          <EntitySet Name="VW_FILM_CATALOG" EntityType="Self.VW_FILM_CATALOG" />
+          <AssociationSet Name="SYS_C0013642" Association="Self.SYS_C0013642">
+            <End Role="ACTORS" EntitySet="ACTORS" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMERS" Association="Self.FK_CUSTOMERS">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013641" Association="Self.SYS_C0013641">
+            <End Role="FILMS" EntitySet="FILMS" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013632" Association="Self.SYS_C0013632">
+            <End Role="FILMS" EntitySet="FILMS" />
+            <End Role="FILM_GENRE" EntitySet="FILM_GENRE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013633" Association="Self.SYS_C0013633">
+            <End Role="GENRES" EntitySet="GENRES" />
+            <End Role="FILM_GENRE" EntitySet="FILM_GENRE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013866" Association="Self.SYS_C0013866">
+            <End Role="FILMS" EntitySet="FILMS" />
+            <End Role="SCREENINGS" EntitySet="SCREENINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATIONS" Association="Self.FK_RESERVATIONS">
+            <End Role="SEATS" EntitySet="SEATS" />
+            <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCREENINGS" Association="Self.FK_SCREENINGS">
+            <End Role="SCREENINGS" EntitySet="SCREENINGS" />
+            <End Role="RESERVATIONS" EntitySet="RESERVATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0013963" Association="Self.SYS_C0013963">
+            <End Role="THEATERS" EntitySet="THEATERS" />
+            <End Role="SEATS" EntitySet="SEATS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FlipperNSStoreContainer" CdmEntityContainer="FlipperDB">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="FlipperNS.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACTORS">
+            <EntityTypeMapping TypeName="FlipperNS.ACTORS">
+              <MappingFragment StoreEntitySet="ACTORS">
+                <ScalarProperty Name="ID_ACTOR" ColumnName="ID_ACTOR" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="FlipperNS.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="FlipperNS.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="FlipperNS.AspNetUserRoles">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="FlipperNS.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="FlipperNS.CUSTOMERS">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="REGISTRATION_DATE" ColumnName="REGISTRATION_DATE" />
+                <ScalarProperty Name="LAST_ACCESS" ColumnName="LAST_ACCESS" />
+                <ScalarProperty Name="FIDELITY_POINTS" ColumnName="FIDELITY_POINTS" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIDELITY_BONUS">
+            <EntityTypeMapping TypeName="FlipperNS.FIDELITY_BONUS">
+              <MappingFragment StoreEntitySet="FIDELITY_BONUS">
+                <ScalarProperty Name="ID_FIDELITY_BONUS" ColumnName="ID_FIDELITY_BONUS" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM_ACTOR">
+            <EntityTypeMapping TypeName="FlipperNS.FILM_ACTOR">
+              <MappingFragment StoreEntitySet="FILM_ACTOR">
+                <ScalarProperty Name="ID_FILM_ACTOR" ColumnName="ID_FILM_ACTOR" />
+                <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
+                <ScalarProperty Name="ID_ACTOR" ColumnName="ID_ACTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM_GENRE">
+            <EntityTypeMapping TypeName="FlipperNS.FILM_GENRE">
+              <MappingFragment StoreEntitySet="FILM_GENRE">
+                <ScalarProperty Name="ID_FILM_GENRE" ColumnName="ID_FILM_GENRE" />
+                <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
+                <ScalarProperty Name="ID_GENRE" ColumnName="ID_GENRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILMS">
+            <EntityTypeMapping TypeName="FlipperNS.FILMS">
+              <MappingFragment StoreEntitySet="FILMS">
+                <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="RELEASE_DATE" ColumnName="RELEASE_DATE" />
+                <ScalarProperty Name="PLOT" ColumnName="PLOT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GENRES">
+            <EntityTypeMapping TypeName="FlipperNS.GENRES">
+              <MappingFragment StoreEntitySet="GENRES">
+                <ScalarProperty Name="ID_GENRE" ColumnName="ID_GENRE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATIONS">
+            <EntityTypeMapping TypeName="FlipperNS.RESERVATIONS">
+              <MappingFragment StoreEntitySet="RESERVATIONS">
+                <ScalarProperty Name="ID_RESERVATION" ColumnName="ID_RESERVATION" />
+                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+                <ScalarProperty Name="ID_SCREENING" ColumnName="ID_SCREENING" />
+                <ScalarProperty Name="RESERVATION_DATE" ColumnName="RESERVATION_DATE" />
+                <ScalarProperty Name="ID_SEAT" ColumnName="ID_SEAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCREENINGS">
+            <EntityTypeMapping TypeName="FlipperNS.SCREENINGS">
+              <MappingFragment StoreEntitySet="SCREENINGS">
+                <ScalarProperty Name="ID_SCREENING" ColumnName="ID_SCREENING" />
+                <ScalarProperty Name="ID_FILM" ColumnName="ID_FILM" />
+                <ScalarProperty Name="SCREENING_DATE" ColumnName="SCREENING_DATE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="REDUCTION_PCT" ColumnName="REDUCTION_PCT" />
+                <ScalarProperty Name="REDUCTED_PRICE" ColumnName="REDUCTED_PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEATS">
+            <EntityTypeMapping TypeName="FlipperNS.SEATS">
+              <MappingFragment StoreEntitySet="SEATS">
+                <ScalarProperty Name="ID_SEAT" ColumnName="ID_SEAT" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ID_THEATER" ColumnName="ID_THEATER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THEATERS">
+            <EntityTypeMapping TypeName="FlipperNS.THEATERS">
+              <MappingFragment StoreEntitySet="THEATERS">
+                <ScalarProperty Name="ID_THEATER" ColumnName="ID_THEATER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_FILM_CATALOG">
+            <EntityTypeMapping TypeName="FlipperNS.VW_FILM_CATALOG">
+              <MappingFragment StoreEntitySet="VW_FILM_CATALOG">
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="RILASCIATO" ColumnName="RILASCIATO" />
+                <ScalarProperty Name="TRAMA" ColumnName="TRAMA" />
+                <ScalarProperty Name="ATTORI" ColumnName="ATTORI" />
+                <ScalarProperty Name="CATEGORIA" ColumnName="CATEGORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
