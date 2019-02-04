@@ -341,8 +341,9 @@ namespace FlipperAPI.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
+            
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
 
             if (!result.Succeeded)
             {
@@ -354,6 +355,7 @@ namespace FlipperAPI.Controllers
 
         // POST api/Account/NewRole
         //[Authorize(Roles = "SUPERADMINFINALEAOCCHIBLU")
+        [AllowAnonymous]
         [Route("NewRole")]
         public IHttpActionResult NewRole(RoleBindingModel Role)
         {
@@ -400,7 +402,8 @@ namespace FlipperAPI.Controllers
         // GET api/Account/Roles
         [HttpGet]
         [Route("Roles")]
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
         public IEnumerable<IdentityRole> Roles()
         {
             var roles = RoleManager.Roles.ToList();

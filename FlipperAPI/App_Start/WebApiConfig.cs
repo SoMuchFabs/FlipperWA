@@ -16,6 +16,9 @@ namespace FlipperAPI
             // Configurare l'API Web per usare solo l'autenticazione con token di connessione.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             // Route dell'API Web
             config.MapHttpAttributeRoutes();

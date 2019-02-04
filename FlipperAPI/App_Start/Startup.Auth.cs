@@ -23,7 +23,7 @@ namespace FlipperAPI
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configurare il contesto di database e la gestione utenti per l'utilizzo di un'unica istanza per richiesta
-            app.CreatePerOwinContext(FlipperDbContext.Create);
+            app.CreatePerOwinContext(FlipperDbModel.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 

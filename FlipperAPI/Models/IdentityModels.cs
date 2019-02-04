@@ -37,48 +37,48 @@ namespace FlipperAPI.Models
 
         public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
         {
-            var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<FlipperDbContext>()));
+            var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<FlipperDbModel>()));
             return manager;
         }
     }
+    
+    //public class FlipperDbContext : IdentityDbContext<ApplicationUser>
+    //{
+    //    public FlipperDbContext()
+    //        : base("FlipperDBIdentity")
+    //    {
+    //    }
 
-    public class FlipperDbContext : IdentityDbContext
-    {
-        public FlipperDbContext()
-            : base("FlipperDB")
-        {
-        }
+    //    public static FlipperDbContext Create()
+    //    {
+    //        return new FlipperDbContext();
+    //    }
 
-        public static FlipperDbContext Create()
-        {
-            return new FlipperDbContext();
-        }
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+    //        base.OnModelCreating(modelBuilder); // MUST go first.
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder); // MUST go first.
+    //        modelBuilder.HasDefaultSchema("ITS_GROUP2"); // Use uppercase!     
 
-            modelBuilder.HasDefaultSchema("ITS_GROUP2"); // Use uppercase!     
+    //        modelBuilder.Entity<ACTORS>().HasKey(c => c.ID_ACTOR);
+    //        modelBuilder.Entity<GENRES>().HasKey(c => c.ID_GENRE);
+    //        modelBuilder.Entity<FILM_ACTOR>().HasKey(c => c.ID_FILM_ACTOR);
+    //        modelBuilder.Entity<FILM_GENRE>().HasKey(c => c.ID_FILM_GENRE);
+    //        modelBuilder.Entity<FILMS>().HasKey(c => c.ID_FILM);
+    //        modelBuilder.Entity<GENRES>().HasKey(c => c.ID_GENRE);
+    //        modelBuilder.Entity<SCREENINGS>().HasKey(c => c.ID_SCREENING);
+    //        modelBuilder.Entity<RESERVATIONS>().HasKey(c => c.ID_RESERVATION);
+    //        modelBuilder.Entity<SEATS>().HasKey(c => c.ID_SEAT);
+    //        modelBuilder.Entity<THEATERS>().HasKey(c => c.ID_THEATER);
 
-            modelBuilder.Entity<ACTORS>().HasKey(c => c.ID_ACTOR);
-            modelBuilder.Entity<GENRES>().HasKey(c => c.ID_GENRE);
-            modelBuilder.Entity<FILM_ACTOR>().HasKey(c => c.ID_FILM_ACTOR);
-            modelBuilder.Entity<FILM_GENRE>().HasKey(c => c.ID_FILM_GENRE);
-            modelBuilder.Entity<FILMS>().HasKey(c => c.ID_FILM);
-            modelBuilder.Entity<GENRES>().HasKey(c => c.ID_GENRE);
-            modelBuilder.Entity<SCREENINGS>().HasKey(c => c.ID_SCREENING);
-            modelBuilder.Entity<RESERVATIONS>().HasKey(c => c.ID_RESERVATION);
-            modelBuilder.Entity<SEATS>().HasKey(c => c.ID_SEAT);
-            modelBuilder.Entity<THEATERS>().HasKey(c => c.ID_THEATER);
+    //        modelBuilder.Entity<ACTORS>().ToTable("ACTORS");
+    //        //modelBuilder.Entity<ApplicationUser>().ToTable("ASPNETUSERS");
+    //        //modelBuilder.Entity<IdentityRole>().ToTable("ASPNETROLES");
+    //        //modelBuilder.Entity<IdentityUserRole>().ToTable("ASPNETUSERROLES");
+    //        //modelBuilder.Entity<IdentityUserClaim>().ToTable("ASPNETUSERCLAIMS");
+    //        //modelBuilder.Entity<IdentityUserLogin>().ToTable("ASPNETUSERLOGINS");
 
-            modelBuilder.Entity<ACTORS>().ToTable("ACTORS");
-            modelBuilder.Entity<ApplicationUser>().ToTable("ASPNETUSERS");
-            modelBuilder.Entity<IdentityRole>().ToTable("ASPNETROLES");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("ASPNETUSERROLES");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("ASPNETUSERCLAIMS");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("ASPNETUSERLOGINS");
-
-        }
-    }
+    //    }
+    //}
 
 }
