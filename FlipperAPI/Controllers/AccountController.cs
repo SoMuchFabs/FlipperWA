@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.ModelBinding;
+﻿using FlipperAPI.Models;
+using FlipperAPI.Providers;
+using FlipperAPI.Results;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using FlipperAPI.Models;
-using FlipperAPI.Providers;
-using FlipperAPI.Results;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
 
 namespace FlipperAPI.Controllers
 {
@@ -33,16 +32,19 @@ namespace FlipperAPI.Controllers
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat,ApplicationRoleManager roleManager)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
             RoleManager = roleManager;
         }
 
-        public ApplicationRoleManager RoleManager { get {
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
                 return _roleManager ?? Request.GetOwinContext().Get<ApplicationRoleManager>();
-            } 
+            }
             private set
             {
                 _roleManager = value;
@@ -137,7 +139,7 @@ namespace FlipperAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -270,9 +272,9 @@ namespace FlipperAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -341,7 +343,7 @@ namespace FlipperAPI.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-            
+
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
 
@@ -349,7 +351,29 @@ namespace FlipperAPI.Controllers
             {
                 return GetErrorResult(result);
             }
-            
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("Ban")]
+        public async Task<IHttpActionResult> Ban(BanBindingModel banModel)
+        {
+            ApplicationUser user = await UserManager.FindByIdAsync(banModel.Id);
+            if (user == null )
+            {
+                return NotFound();
+            }
+            DateTimeOffset FineBan = DateTimeOffset.Now;
+            FineBan = FineBan.AddDays(banModel.BanDays);
+            IdentityResult result = await UserManager.SetLockoutEnabledAsync(user.Id, true);
+            result = await UserManager.SetLockoutEndDateAsync(user.Id, FineBan);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
             return Ok();
         }
 
@@ -378,13 +402,13 @@ namespace FlipperAPI.Controllers
         public async Task<IHttpActionResult> AddRoleToUser(AssignToRoleBindingModel assignToRole)
         {
             var exactRole = await RoleManager.FindByNameAsync(assignToRole.Role);
-            if(exactRole == null)
+            if (exactRole == null)
             {
                 return BadRequest($"Role {assignToRole.Role} does not exist");
             }
 
             var user = await UserManager.FindByIdAsync(assignToRole.UserID);
-            if(user == null)
+            if (user == null)
             {
                 return BadRequest($"User with id {assignToRole.UserID} does not exist");
             }
@@ -438,7 +462,7 @@ namespace FlipperAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

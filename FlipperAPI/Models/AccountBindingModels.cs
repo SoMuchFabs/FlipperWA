@@ -64,6 +64,14 @@ namespace FlipperAPI.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class BanBindingModel
+    {
+        [Required]
+        public string Id { get; set; }
+        [Required]
+        public long BanDays { get; set; }
+    }
+
     public class RegisterExternalBindingModel
     {
         [Required]

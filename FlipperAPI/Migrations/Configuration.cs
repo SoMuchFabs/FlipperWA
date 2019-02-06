@@ -5,14 +5,14 @@ namespace FlipperAPI.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FlipperAPI.FlipperDbModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<FlipperAPI.FlipperDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FlipperAPI.FlipperDbModel context)
+        protected override void Seed(FlipperAPI.FlipperDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

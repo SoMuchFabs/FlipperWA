@@ -131,6 +131,9 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -142,6 +145,9 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.Owin, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.7\lib\net45\System.Web.Http.Owin.dll</HintPath>
@@ -209,7 +215,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACTORS.cs" />
+    <Compile Include="Models\DTO\FilmsDTO.cs" />
+    <Compile Include="Repository\DAL\Models\ACTORS.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -244,20 +251,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="ASPNETROLES.cs" />
-    <Compile Include="ASPNETUSERCLAIMS.cs" />
-    <Compile Include="ASPNETUSERROLES.cs" />
-    <Compile Include="ASPNETUSERS.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ACTORSController.cs" />
+    <Compile Include="Controllers\FILMSController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="C__MigrationHistory.cs" />
-    <Compile Include="FIDELITY_BONUS.cs" />
-    <Compile Include="FILMS.cs" />
-    <Compile Include="FILM_ACTOR.cs" />
-    <Compile Include="FILM_GENRE.cs" />
-    <Compile Include="FlipperDbModel.cs" />
-    <Compile Include="GENRES.cs" />
+    <Compile Include="Repository\DAL\GenericRepository.cs" />
+    <Compile Include="Repository\DAL\Models\FIDELITY_BONUS.cs" />
+    <Compile Include="Repository\DAL\Models\FILMS.cs" />
+    <Compile Include="Repository\DAL\Models\FILM_ACTOR.cs" />
+    <Compile Include="Repository\DAL\Models\FILM_GENRE.cs" />
+    <Compile Include="Repository\DAL\Models\FlipperDbContext.cs" />
+    <Compile Include="Repository\DAL\Models\GENRES.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,16 +278,16 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="RESERVATIONS.cs" />
+    <Compile Include="Repository\DAL\Models\RESERVATIONS.cs" />
+    <Compile Include="Repository\DAL\UnitOfWork.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="SCREENINGS.cs" />
-    <Compile Include="SEATS.cs" />
+    <Compile Include="Repository\DAL\Models\SCREENINGS.cs" />
+    <Compile Include="Repository\DAL\Models\SEATS.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="THEATERS.cs" />
-    <Compile Include="VW_FILM_CATALOG.cs" />
+    <Compile Include="Repository\DAL\Models\THEATERS.cs" />
+    <Compile Include="Repository\DAL\Models\VW_FILM_CATALOG.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\log.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -380,7 +386,9 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>

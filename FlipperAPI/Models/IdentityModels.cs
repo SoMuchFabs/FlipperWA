@@ -17,14 +17,13 @@ namespace FlipperAPI.Models
         public string SURNAME { get; set; }
         public DateTime REGISTRATION_DATE { get; set; }
         public DateTime LAST_ACCESS { get; set; }
-        public bool IS_ACTIVE { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Tenere presente che il valore di authenticationType deve corrispondere a quello definito in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Aggiungere qui i reclami utente personalizzati
-            return userIdentity;
+            return userIdentity;           
         }
     }
 
@@ -37,7 +36,7 @@ namespace FlipperAPI.Models
 
         public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
         {
-            var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<FlipperDbModel>()));
+            var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<FlipperDbContext>()));
             return manager;
         }
     }
