@@ -33,6 +33,9 @@ namespace FlipperAPI
         [StringLength(500)]
         public string POSTER_URL { get; set; }
 
+        [StringLength(500)]
+        public string LANDSCAPE_POSTER_URL { get; set; }
+
         public decimal DURATION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

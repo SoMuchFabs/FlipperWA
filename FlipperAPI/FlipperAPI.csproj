@@ -215,7 +215,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FIDELITYController.cs" />
+    <Compile Include="Controllers\GENRESController.cs" />
+    <Compile Include="Models\DTO\ActorsDTO.cs" />
     <Compile Include="Models\DTO\FilmsDTO.cs" />
+    <Compile Include="Models\DTO\GenresDTO.cs" />
     <Compile Include="Repository\DAL\Models\ACTORS.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

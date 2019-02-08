@@ -163,6 +163,9 @@ namespace FlipperAPI
                 .Property(e => e.ID_SEAT)
                 .HasPrecision(38, 0);
 
+            modelBuilder.Entity<RESERVATIONS>()
+                .Property(e => e.ID_USER);
+
             modelBuilder.Entity<SCREENINGS>()
                 .Property(e => e.ID_SCREENING)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)

@@ -49,6 +49,14 @@ namespace FlipperAPI.Models
     public class RegisterBindingModel
     {
         [Required]
+        [Display(Name = "Nome")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Cognome")]
+        public string Surname { get; set; }
+
+        [Required]
         [Display(Name = "Posta elettronica")]
         public string Email { get; set; }
 

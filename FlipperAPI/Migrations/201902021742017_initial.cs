@@ -74,7 +74,6 @@ namespace FlipperAPI.Migrations
                     ID_FILM = c.Decimal(nullable: false, precision: 38, scale: 0),
                     SCREENING_DATE = c.DateTime(nullable: false),
                     PRICE = c.Decimal(precision: 2, scale: 2),
-                    REDUCTION_PCT = c.Decimal(precision: 3, scale: 0),
                     REDUCTED_PRICE = c.Decimal(precision: 2, scale: 2),
                     ID_THEATER = c.Decimal(nullable: false, precision: 38, scale: 0),
                 })

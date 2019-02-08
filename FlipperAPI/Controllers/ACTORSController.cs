@@ -1,133 +1,140 @@
-﻿using System;
+﻿using FlipperAPI.Models.DTO;
+using FlipperAPI.Repository.DAL;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using FlipperAPI;
 
 namespace FlipperAPI.Controllers
 {
     public class ACTORSController : ApiController
     {
-        private FlipperDbContext db = new FlipperDbContext();
+        private UnitOfWork _unitOfWork = new UnitOfWork();
 
         // GET: api/ACTORS
-        public IQueryable<ACTORS> GetACTORS()
+        public IEnumerable<ActorsDTO> GetACTORS()
         {
-            return db.ACTORS;
+            List<ACTORS> listaAttoriRaw = _unitOfWork.ActorsRepository.Get().ToList();
+            List<ActorsDTO> listaAttoriFinal = new List<ActorsDTO>();
+            listaAttoriRaw.ForEach(x =>
+            {
+                listaAttoriFinal.Add(new ActorsDTO
+                {
+                    Id = x.ID_ACTOR,
+                    Name = x.NAME,
+                    Surname = x.SURNAME
+                });
+            });
+            return listaAttoriFinal;
         }
 
         // GET: api/ACTORS/5
-        [ResponseType(typeof(ACTORS))]
+        [ResponseType(typeof(ActorsDTO))]
         public IHttpActionResult GetACTORS(decimal id)
         {
-            ACTORS aCTORS = db.ACTORS.Find(id);
-            if (aCTORS == null)
+            ACTORS actor = _unitOfWork.ActorsRepository.GetById(id);
+            if (actor == null)
             {
                 return NotFound();
             }
 
-            return Ok(aCTORS);
+            return Ok(
+                new ActorsDTO{
+                Id = actor.ID_ACTOR,
+                Name = actor.NAME,
+                Surname = actor.SURNAME
+            });
         }
 
-        // PUT: api/ACTORS/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutACTORS(decimal id, ACTORS aCTORS)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //    // PUT: api/ACTORS/5
+        //    [ResponseType(typeof(void))]
+        //    public IHttpActionResult PutACTORS(decimal id, ACTORS aCTORS)
+        //    {
+        //        if (!ModelState.IsValid)
+        //        {
+        //            return BadRequest(ModelState);
+        //        }
 
-            if (id != aCTORS.ID_ACTOR)
-            {
-                return BadRequest();
-            }
+        //        if (id != aCTORS.ID_ACTOR)
+        //        {
+        //            return BadRequest();
+        //        }
 
-            db.Entry(aCTORS).State = EntityState.Modified;
+        //        db.Entry(aCTORS).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ACTORSExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //        try
+        //        {
+        //            db.SaveChanges();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!ACTORSExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //        return StatusCode(HttpStatusCode.NoContent);
+        //    }
 
-        // POST: api/ACTORS
-        [ResponseType(typeof(ACTORS))]
-        public IHttpActionResult PostACTORS(ACTORS aCTORS)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //    // POST: api/ACTORS
+        //    [ResponseType(typeof(ACTORS))]
+        //    public IHttpActionResult PostACTORS(ACTORS aCTORS)
+        //    {
+        //        if (!ModelState.IsValid)
+        //        {
+        //            return BadRequest(ModelState);
+        //        }
 
-            db.ACTORS.Add(aCTORS);
+        //        db.ACTORS.Add(aCTORS);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (ACTORSExists(aCTORS.ID_ACTOR))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //        try
+        //        {
+        //            db.SaveChanges();
+        //        }
+        //        catch (DbUpdateException)
+        //        {
+        //            if (ACTORSExists(aCTORS.ID_ACTOR))
+        //            {
+        //                return Conflict();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-            return CreatedAtRoute("DefaultApi", new { id = aCTORS.ID_ACTOR }, aCTORS);
-        }
+        //        return CreatedAtRoute("DefaultApi", new { id = aCTORS.ID_ACTOR }, aCTORS);
+        //    }
 
-        // DELETE: api/ACTORS/5
-        [ResponseType(typeof(ACTORS))]
-        public IHttpActionResult DeleteACTORS(decimal id)
-        {
-            ACTORS aCTORS = db.ACTORS.Find(id);
-            if (aCTORS == null)
-            {
-                return NotFound();
-            }
+        //    // DELETE: api/ACTORS/5
+        //    [ResponseType(typeof(ACTORS))]
+        //    public IHttpActionResult DeleteACTORS(decimal id)
+        //    {
+        //        ACTORS aCTORS = db.ACTORS.Find(id);
+        //        if (aCTORS == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            db.ACTORS.Remove(aCTORS);
-            db.SaveChanges();
+        //        db.ACTORS.Remove(aCTORS);
+        //        db.SaveChanges();
 
-            return Ok(aCTORS);
-        }
+        //        return Ok(aCTORS);
+        //    }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool ACTORSExists(decimal id)
-        {
-            return db.ACTORS.Count(e => e.ID_ACTOR == id) > 0;
-        }
     }
 }

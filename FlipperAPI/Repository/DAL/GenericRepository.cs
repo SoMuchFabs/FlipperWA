@@ -126,6 +126,18 @@ namespace FlipperAPI.DAL
             _dbSet.Remove(_dbSet.Find(id));
         }
 
+        /// <summary>
+        /// Update an entity of type T
+        /// </summary>
+        /// <param name="ItemToUpdate">
+        /// Entity class
+        /// </param>
+        public virtual void Update(T ItemToUpdate)
+        {
+            _dbSet.Attach(ItemToUpdate);
+            _context.Entry(ItemToUpdate).State = EntityState.Modified;
+        }
+
         [Obsolete("this Update method is deprecated, please use another Update method instead")]
         /// <summary>
         /// Deprecated
@@ -146,16 +158,15 @@ namespace FlipperAPI.DAL
         }
 
         /// <summary>
-        /// Update an entity of type T
+        /// Check if entity T exists
         /// </summary>
-        /// <param name="ItemToUpdate">
-        /// Entity class
+        /// <param name="id">
+        /// The id of the required item
         /// </param>
-        public virtual void Update(T ItemToUpdate)
+        /// <returns></returns>
+        public bool Exists(object id)
         {
-            _dbSet.Attach(ItemToUpdate);
-            _context.Entry(ItemToUpdate).State = EntityState.Modified;
+            return _dbSet.Find(id)!= null ? true : false;
         }
-
     }
 }

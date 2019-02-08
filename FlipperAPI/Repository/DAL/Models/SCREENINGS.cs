@@ -25,8 +25,6 @@ namespace FlipperAPI
 
         public decimal? PRICE { get; set; }
 
-        public byte? REDUCTION_PCT { get; set; }
-
         public decimal? REDUCTED_PRICE { get; set; }
 
         public decimal ID_THEATER { get; set; }
