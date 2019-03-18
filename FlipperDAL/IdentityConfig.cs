@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using FlipperDAL.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using FlipperAPI.Models;
 
-namespace FlipperAPI
+
+namespace FlipperDAL
 {
     // Configurare la gestione utenti dell'applicazione utilizzata in questa applicazione. UserManager viene definito in ASP.NET Identity ed è utilizzato dall'applicazione.
 

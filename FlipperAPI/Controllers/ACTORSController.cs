@@ -1,5 +1,6 @@
 ﻿using FlipperAPI.Models.DTO;
-using FlipperAPI.Repository.DAL;
+using FlipperAPI.Repository;
+using FlipperDAL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;

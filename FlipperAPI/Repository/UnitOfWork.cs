@@ -1,7 +1,8 @@
-﻿using FlipperAPI.DAL;
+﻿
+using FlipperDAL;
 using System;
 
-namespace FlipperAPI.Repository.DAL
+namespace FlipperAPI.Repository
 {
     public class UnitOfWork : IDisposable
     {

@@ -1,4 +1,5 @@
-﻿using FlipperAPI.Repository.DAL;
+﻿using FlipperAPI.Repository;
+using FlipperDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

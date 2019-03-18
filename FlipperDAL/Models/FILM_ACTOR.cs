@@ -1,4 +1,4 @@
-namespace FlipperAPI
+namespace FlipperDAL
 {
     using System;
     using System.Collections.Generic;

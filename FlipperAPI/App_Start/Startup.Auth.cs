@@ -10,6 +10,8 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using FlipperAPI.Providers;
 using FlipperAPI.Models;
+using FlipperDAL.Models;
+using FlipperDAL;
 
 namespace FlipperAPI
 {

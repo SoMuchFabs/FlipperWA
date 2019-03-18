@@ -1,6 +1,8 @@
 ﻿using FlipperAPI.Models;
 using FlipperAPI.Providers;
 using FlipperAPI.Results;
+using FlipperDAL;
+using FlipperDAL.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;

@@ -1,4 +1,4 @@
-namespace FlipperAPI
+namespace FlipperDAL
 {
     using System;
     using System.Collections.Generic;
@@ -6,26 +6,28 @@ namespace FlipperAPI
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ITS_GROUP2.GENRES")]
-    public partial class GENRES
+    [Table("ITS_GROUP2.THEATERS")]
+    public partial class THEATERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GENRES()
+        public THEATERS()
         {
-            FILM_GENRE = new HashSet<FILM_GENRE>();
+            SCREENINGS = new HashSet<SCREENINGS>();
+            SEATS = new HashSet<SEATS>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public decimal ID_GENRE { get; set; }
+        public decimal ID_THEATER { get; set; }
 
-        [StringLength(100)]
+        [Required]
+        [StringLength(50)]
         public string NAME { get; set; }
 
-        [StringLength(500)]
-        public string DESCRIPTION { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SCREENINGS> SCREENINGS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FILM_GENRE> FILM_GENRE { get; set; }
+        public virtual ICollection<SEATS> SEATS { get; set; }
     }
 }

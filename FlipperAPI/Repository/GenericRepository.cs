@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlipperDAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace FlipperAPI.DAL
+namespace FlipperAPI.Repository
 {
     public class GenericRepository<T> where T : class
     {

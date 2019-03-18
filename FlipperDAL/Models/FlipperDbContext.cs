@@ -1,6 +1,6 @@
-namespace FlipperAPI
+namespace FlipperDAL
 {
-    using FlipperAPI.Models;
+    using FlipperDAL.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -19,7 +19,6 @@ namespace FlipperAPI
         }
         #region ROBAINUTILE
 
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<ACTORS> ACTORS { get; set; }
         public virtual DbSet<FIDELITY_BONUS> FIDELITY_BONUS { get; set; }
         public virtual DbSet<FILM_ACTOR> FILM_ACTOR { get; set; }
