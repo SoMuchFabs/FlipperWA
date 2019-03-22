@@ -30,6 +30,8 @@ namespace FlipperDAL
         public virtual DbSet<SEATS> SEATS { get; set; }
         public virtual DbSet<THEATERS> THEATERS { get; set; }
         public virtual DbSet<VW_FILM_CATALOG> VW_FILM_CATALOG { get; set; }
+        public virtual DbSet<BUSINESS_INT_BESTSELLERS> BUSINESS_INT_BESTSELLERS { get; set; }
+        public virtual DbSet<BUSINESS_INT_LATEST> BUSINESS_INT_LATEST { get; set; }
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -155,6 +157,11 @@ namespace FlipperDAL
                 .HasPrecision(38, 0);
 
             modelBuilder.Entity<RESERVATIONS>()
+                .HasRequired(x=> x.APPLICATIONUSER)
+                .WithMany(x=> x.RESERVATIONS)
+                .HasForeignKey(x=> x.ID_USER);
+
+            modelBuilder.Entity<RESERVATIONS>()
                 .Property(e => e.ID_SCREENING)
                 .HasPrecision(38, 0);
 
@@ -179,7 +186,7 @@ namespace FlipperDAL
                 .HasPrecision(2, 2);
 
             modelBuilder.Entity<SCREENINGS>()
-                .Property(e => e.REDUCTED_PRICE)
+                .Property(e => e.REDUCED_PRICE)
                 .HasPrecision(2, 2);
 
             modelBuilder.Entity<SCREENINGS>()
@@ -242,6 +249,34 @@ namespace FlipperDAL
 
             modelBuilder.Entity<VW_FILM_CATALOG>()
                 .Property(e => e.CATEGORIA)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<BUSINESS_INT_BESTSELLERS>()
+                .Property(e => e.NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<BUSINESS_INT_BESTSELLERS>()
+                .Property(e => e.TOTAL_SCREENINGS)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<BUSINESS_INT_BESTSELLERS>()
+                .Property(e => e.TOTAL_EARNINGS)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<BUSINESS_INT_BESTSELLERS>()
+                .Property(e => e.AVERAGE_EARNINGS)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<BUSINESS_INT_LATEST>()
+                .Property(e => e.NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<BUSINESS_INT_LATEST>()
+                .Property(e => e.TOTAL_RESERVATIONS)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<BUSINESS_INT_LATEST>()
+                .Property(e => e.REDUCTED_REGULAR_RATIO)
                 .IsUnicode(false);
 
             modelBuilder.Entity<IdentityRole>().ToTable("IDENTITYROLES");

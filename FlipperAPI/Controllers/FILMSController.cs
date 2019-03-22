@@ -36,12 +36,38 @@ namespace FlipperAPI.Controllers
                     Plot = x.PLOT,
                     PosterUrl = x.POSTER_URL,
                     ReleaseDate = x.RELEASE_DATE,
-                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE),
+                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE.ToString() + " " + y.THEATERS.NAME),
                     Actors = string.Join(",", x.FILM_ACTOR.Select(y => y.ID_ACTOR)),
                     Genres = String.Join(",", x.FILM_GENRE.Select(y => y.ID_GENRE))
                 });
             });
             return lista;
+        }
+
+        // GET: api/FILMS/?id={id}
+        [Route("api/films")]
+        [ResponseType(typeof(FilmsDTO))]
+        [AllowAnonymous]
+        public FilmsDTO GetfilmsById(decimal id)
+        {
+            FILMS Film = _unitOfWork.FilmsRepository.GetById(id);
+            if(Film == null)
+            {
+                return new FilmsDTO();
+            }
+            FilmsDTO FilmDTO = new FilmsDTO
+                {
+                    IdFilm = Film.ID_FILM,
+                    Title = Film.NAME,
+                    Duration = Film.DURATION,
+                    Plot = Film.PLOT,
+                    PosterUrl = Film.POSTER_URL,
+                    ReleaseDate = Film.RELEASE_DATE,
+                    ScreeningDate = Film.SCREENINGS.Select(y => y.SCREENING_DATE.ToString() + " " + y.THEATERS.NAME),
+                    Actors = string.Join(",", Film.FILM_ACTOR.Select(y => y.ID_ACTOR)),
+                    Genres = String.Join(",", Film.FILM_GENRE.Select(y => y.ID_GENRE))
+                };
+            return FilmDTO;
         }
 
         // GET: api/Films/?Title={title}
@@ -62,7 +88,7 @@ namespace FlipperAPI.Controllers
                     Plot = x.PLOT,
                     PosterUrl = x.POSTER_URL,
                     ReleaseDate = x.RELEASE_DATE,
-                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE),
+                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE.ToString() + " " + y.THEATERS.NAME),
                     Actors = string.Join(", ", x.FILM_ACTOR.Select(y => new StringBuilder(y.ACTORS.NAME + " " + y.ACTORS.SURNAME))),
                     Genres = String.Join(", ", x.FILM_GENRE.Select(y => y.GENRES.NAME))
                 });
@@ -95,7 +121,7 @@ namespace FlipperAPI.Controllers
                     Plot = x.PLOT,
                     PosterUrl = x.POSTER_URL,
                     ReleaseDate = x.RELEASE_DATE,
-                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE),
+                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE.ToString() + " " + y.THEATERS.NAME),
                     Actors = string.Join(", ", x.FILM_ACTOR.Select(y => new StringBuilder(y.ACTORS.NAME + " " + y.ACTORS.SURNAME))),
                     Genres = String.Join(", ", x.FILM_GENRE.Select(y => y.GENRES.NAME))
                 });
@@ -128,7 +154,7 @@ namespace FlipperAPI.Controllers
                     Plot = x.PLOT,
                     PosterUrl = x.POSTER_URL,
                     ReleaseDate = x.RELEASE_DATE,
-                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE),
+                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE.ToString() + " " + y.THEATERS.NAME),
                     Actors = string.Join(", ", x.FILM_ACTOR.Select(y => new StringBuilder(y.ACTORS.NAME + " " + y.ACTORS.SURNAME))),
                     Genres = String.Join(", ", x.FILM_GENRE.Select(y => y.GENRES.NAME))
                 });
@@ -154,13 +180,13 @@ namespace FlipperAPI.Controllers
             {
                 lista.Add(new FilmsDTO
                 {
-                    IdFilm = -1,
+                    IdFilm = x.ID_FILM,
                     Title = x.NAME,
                     Duration = x.DURATION,
                     Plot = x.PLOT,
                     PosterUrl = x.POSTER_URL,
                     ReleaseDate = x.RELEASE_DATE,
-                    ScreeningDate = x.SCREENINGS.Select(y => y.SCREENING_DATE),
+                    ScreeningDate = x.SCREENINGS.Where(z=> DateTime.Compare(z.SCREENING_DATE,now)>-1).Select(y=>y.SCREENING_DATE.ToString() + " " + y.THEATERS.NAME),
                     Actors = string.Join(", ", x.FILM_ACTOR.Select(y => new StringBuilder(y.ACTORS.NAME + " " + y.ACTORS.SURNAME))),
                     Genres = String.Join(", ", x.FILM_GENRE.Select(y => y.GENRES.NAME))
                 });
@@ -181,7 +207,7 @@ namespace FlipperAPI.Controllers
             {
                 lista.Add(new FilmsDTO
                 {
-                    IdFilm = -1,
+                    IdFilm = x.ID_FILM,
                     Title = x.NAME,
                     Duration = x.DURATION,
                     Plot = x.PLOT,
@@ -204,19 +230,6 @@ namespace FlipperAPI.Controllers
             List<string> lista = _unitOfWork.FilmsRepository.Get(x => x.SCREENINGS.Count > 0 && x.SCREENINGS.Any(y => DateTime.Compare(y.SCREENING_DATE, now) > -1)).Select(x => x.LANDSCAPE_POSTER_URL).ToList();
             return lista;
         }
-
-        // GET: api/FILMS/5
-        //[ResponseType(typeof(FILMS))]
-        //public IHttpActionResult Getfilms(decimal id)
-        //{
-        //    FILMS fILMS = db.FILMS.Find(id);
-        //    if (fILMS == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(fILMS);
-        //}
 
         // PUT: api/FILMS/5
         [ResponseType(typeof(void))]

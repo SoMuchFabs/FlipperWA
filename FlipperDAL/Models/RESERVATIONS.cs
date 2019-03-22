@@ -21,6 +21,8 @@ namespace FlipperDAL
 
         public decimal ID_SEAT { get; set; }
 
+        public bool IS_REDUCED { get; set; }
+
         [Required]
         [StringLength(128)]
         public string ID_USER { get; set; }

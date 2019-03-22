@@ -436,14 +436,34 @@ namespace FlipperAPI.Controllers
             return roles;
         }
 
-        // GET api/Account/AmIAdmin
+        // GET api/Account/whoami
         [HttpGet]
-        [Route("amiadmin")]
-        [Authorize(Roles = "Admin")]
-        public IHttpActionResult AmIAdmin()
+        [Route("whoami")]
+        [Authorize]
+        public async Task<IEnumerable<string>> WhoAmI()
         {
-            return Ok();
+           IEnumerable<string> roles = await UserManager.GetRolesAsync(User.Identity.GetUserId());
+           return roles;
         }
+
+        // GET api/Account/menu
+        [HttpGet]
+        [Route("menu")]
+        [Authorize]
+        public async Task<IEnumerable<string>> Menu()
+        {
+            IEnumerable<string> roles = await UserManager.GetRolesAsync(User.Identity.GetUserId());
+            IEnumerable<string> menu;
+            if (roles.Contains("Admin")){
+                menu = new string[] { "Profilo", "Carrello", "Admin", "Logout" };
+            }
+            else
+            {
+                menu = new string[] { "Profilo", "Carrello", "Logout" };
+            }
+            return menu;
+        }
+
 
         //// POST api/Account/RegisterExternal
         //[OverrideAuthentication]

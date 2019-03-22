@@ -215,8 +215,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BUSINESSController.cs" />
     <Compile Include="Controllers\FIDELITYController.cs" />
     <Compile Include="Controllers\GENRESController.cs" />
+    <Compile Include="Controllers\RESERVATIONSController.cs" />
+    <Compile Include="Controllers\SCREENINGSController.cs" />
     <Compile Include="Models\DTO\ActorsDTO.cs" />
     <Compile Include="Models\DTO\FilmsDTO.cs" />
     <Compile Include="Models\DTO\GenresDTO.cs" />
@@ -264,6 +267,9 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DTO\ScreeningsDTO.cs" />
+    <Compile Include="Models\DTO\SeatsDTO.cs" />
+    <Compile Include="Models\ReservationBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Repository\GenericRepository.cs" />

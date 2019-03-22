@@ -25,7 +25,7 @@ namespace FlipperDAL
 
         public decimal? PRICE { get; set; }
 
-        public decimal? REDUCTED_PRICE { get; set; }
+        public decimal? REDUCED_PRICE { get; set; }
 
         public decimal ID_THEATER { get; set; }
 

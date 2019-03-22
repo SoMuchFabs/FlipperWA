@@ -1,5 +1,6 @@
 ﻿
 using FlipperDAL;
+using FlipperDAL.Models;
 using System;
 
 namespace FlipperAPI.Repository
@@ -17,7 +18,9 @@ namespace FlipperAPI.Repository
         private GenericRepository<THEATERS> theatersRepository;
         private GenericRepository<FILM_ACTOR> filmActorRepository;
         private GenericRepository<FILM_GENRE> filmGenreRepository;
-
+        private GenericRepository<BUSINESS_INT_BESTSELLERS> b_I_BestsellersRepository;
+        private GenericRepository<BUSINESS_INT_LATEST> b_I_LatestRepository;
+        
         public GenericRepository<ACTORS> ActorsRepository
         {
             get
@@ -135,6 +138,30 @@ namespace FlipperAPI.Repository
                     filmActorRepository = new GenericRepository<FILM_ACTOR>(_context);
                 }
                 return filmActorRepository;
+            }
+        }
+
+        public GenericRepository<BUSINESS_INT_BESTSELLERS> BIBestsellersRepository
+        {
+            get
+            {
+                if (b_I_BestsellersRepository == null)
+                {
+                    b_I_BestsellersRepository = new GenericRepository<BUSINESS_INT_BESTSELLERS>(_context);
+                }
+                return b_I_BestsellersRepository;
+            }
+        }
+
+        public GenericRepository<BUSINESS_INT_LATEST> BILatestRepository
+        {
+            get
+            {
+                if (b_I_LatestRepository == null)
+                {
+                    b_I_LatestRepository = new GenericRepository<BUSINESS_INT_LATEST>(_context);
+                }
+                return b_I_LatestRepository;
             }
         }
 
